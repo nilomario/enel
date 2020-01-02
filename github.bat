@@ -1,3 +1,3 @@
 c:
-cd c:\iis\tempore
-git pull
+cd c:\inetpub\wwwroot
+git pull https://github.com/nilomario/enel master
