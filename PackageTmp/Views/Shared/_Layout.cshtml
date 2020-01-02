@@ -1,0 +1,53 @@
+﻿﻿@using System.Web.Optimization;
+@using Passline.Totem.Resources.Web.Shared
+@{
+    string pais = ViewBag.Pais;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    <title>@_Layout.TitleLabel @pais</title>
+
+    <!-- CSS -->
+    @Styles.Render("~/Content/css")
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+</head>
+<body>
+    <div id="fade"></div>
+    <div id="mySpinner"></div>
+    <div class="content-wrapper">
+        <section id="no_connection" style="text-align:center; display:none; padding: 8px 30px; background: red; z-index: 999999; font-size: 16px; font-weight: 300;">
+            <a class="pull-right" href="#" data-toggle="tooltip" data-placement="left" title="" style="color: rgb(255, 255, 255); font-size: 17px" data-original-title="Cerrar esta notificación!">×</a><a href="#" style="color: rgba(255, 255, 255, 0.9); display: inline-block; margin-right: 10px; text-decoration: none;">SIN CONECCIÓN A INTERNET</a>
+        </section>
+        <div class="hold-transition skin-purple fixed">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/globalization")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/Plugins/AdminLte/adminlte.min.js")
+    @Scripts.Render("~/Scripts/Shared/AjaxCommon.js?" + DateTime.Now.Ticks + "")
+    @Scripts.Render("~/Scripts/Shared/Common.js?" + DateTime.Now.Ticks + "")
+    @Scripts.Render("~/plugins/validate")
+    @Scripts.Render("~/Scripts/Totem/notify.js?" + DateTime.Now.Ticks + "")
+
+    @if (IsSectionDefined("StyleAfter"))
+    {@RenderSection("StyleAfter", required: false)}
+
+    <script>
+        var submitErrorMessage = "Ha ocurrido un error inesperado. Por favor, inténtelo más tarde.";
+        var nameClassLoading = "whirl standard";
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

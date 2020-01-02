@@ -1,0 +1,40 @@
+﻿@using Passline.Totem.Core.DataTransferObjects
+@{
+    var idProducto = ViewBag.idProducto;
+    bool isDecimal = ViewBag.IsDecimal;
+}
+<div class="center-nav">
+    <div class="grid">
+        @foreach (var item in (IEnumerable<ProductoDto>)idProducto)
+        {
+            <div class="product" data-price="@item.precio" data-quantity="0">
+                <div class="element-item @item.idcategoria" data-category="@item.idcategoria">
+                    <div class="sombra">
+                        <img src="@item.imagen" />
+                    </div>
+                    <div id="@item.idproducto" value="" class="a_demo_four my-cart-btn"
+                         data-id=@item.idproducto data-name="@item.nombre" data-summary="@item.descripcion" data-price="@item.precio" data-quantity="1" data-image="@item.imagen" data-extra="@ViewBag.IdExtra">
+                        AGREGAR
+                    </div>
+                    <div id="interaccion_@item.idproducto" class="sig" style="display:none">
+                        <input type="button" value="-" class="signos menos my-cart-btn" data-id=@item.idproducto data-name="@item.nombre" data-summary="@item.descripcion" data-price="@item.precio" data-quantity="1" data-image="@item.imagen" data-extra="@ViewBag.IdExtra" />
+                        <input type="button" value="+" class="signos mas my-cart-btn adicionales" data-id="@item.idproducto" data-name="@item.nombre" data-summary="@item.descripcion" data-price="@item.precio" data-quantity="1" data-image="@item.imagen" data-extra="@ViewBag.IdExtra" />
+                    </div>
+                    <p id="nomb_@item.idproducto" class="brakedotnombre nombre">@item.nombre</p>
+                    <p id="desc_@item.idproducto" class="brakedotdescripcion descripcion">@item.descripcion</p>
+                    @{
+                        if (isDecimal)
+                        {
+                            item.precio = (Convert.ToDecimal(item.precio) / 100).ToString("F");
+                        }
+                        else
+                        {
+                            item.precio = (Convert.ToInt32(item.precio)).ToString("N0");
+                        }
+                    }
+                    <p class="precioso">@ViewBag.Moneda @item.precio</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿html, body {
+    overflow: auto;
+}
+
+    body.swal2-shown {
+        overflow-y: auto;
+    }
+
+.myAdminTopBar {
+    font-size: 20px;
+    color: white;
+    background: purple;
+    display: block;
+    padding-left: 12px;
+    padding-right: 14px;
+    padding-top: 16px;
+    padding-bottom: 15px;
+    cursor: default;
+}
+
+.bandera {
+    font-size: 20px;
+    color: white;
+    display: block;
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-top: 14px;
+    padding-bottom: 15px;
+    cursor: default;
+}
+
+.pais {
+    font-size: 20px;
+    color: white;
+    display: block;
+    padding-right: 14px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    cursor: default;
+}

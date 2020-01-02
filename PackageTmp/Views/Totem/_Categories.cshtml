@@ -1,0 +1,21 @@
+﻿@using Passline.Totem.Core.DataTransferObjects
+@{
+    var idCategoria = ViewBag.idCategoria;
+}
+@if (idCategoria.Count != 0)
+{
+    <div class="top-nav">
+        <div id="filters" class="button-group">
+            @if (idCategoria.Count != 1)
+            {
+                <button id="todos" class="a_demo_three is-checked" data-filter="*">TODOS</button>
+            }
+            @foreach (var c in (IEnumerable<CategoryDto>)idCategoria)
+            {
+                <label class="a_demo_three">
+                    <button id="@c.idcategoria" data-filter=".@c.idcategoria" style="background-color:transparent; border:none">@c.nombre</button>
+                </label>
+            }
+        </div>
+    </div>
+}

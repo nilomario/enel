@@ -1,0 +1,50 @@
+.jqbtk-row {
+    text-align: center;
+}
+
+.jqbtk-container .btn {
+    font-size: 2.2em;
+    width: 2.2em;
+    height: 2em;
+    text-align: center;
+    margin: 2px;
+}
+
+    .jqbtk-container .btn:hover {
+        color: #fff;
+        background-color: rgb(105, 33, 124);
+    }
+
+    .jqbtk-container .btn:active {
+        color: #fff;
+        background-color: rgb(159, 85, 183);
+    }
+
+.jqbtk-container .jqbtk-space {
+    width: 12em;
+}
+
+.jqbtk-container .jqbtk-shift {
+    width: 4.4em;
+}
+
+.jqbtk-container .jqbtk-enter {
+    width: 4em;
+}
+
+.popover {
+    max-width: 1000px;
+}
+
+.keyboard-container {
+    overflow: hidden;
+    position: relative;
+}
+
+    .keyboard-container .popover {
+        left: 0px !important;
+        top: 0px !important;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }

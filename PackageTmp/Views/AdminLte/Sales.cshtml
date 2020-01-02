@@ -1,0 +1,85 @@
+﻿@model Passline.Totem.Core.DataTransferObjects.ProductoDto
+@using System.Threading;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var idTotem = ViewBag.IdTotem;
+    var idProductor = ViewBag.IdProductor;
+    var moneda = ViewBag.Moneda;
+    var bandera = ViewBag.Bandera;
+    var pais = ViewBag.Pais;
+    var version = ViewBag.Version;
+}
+@section Styles{
+    @Styles.Render("~/Content/Plugins/AdminLte/adminLTE.css")
+    @Styles.Render("~/Content/AdminLte/style.css")
+}
+<div class="wrapper" style="margin-top: 20px;">
+    @Html.Partial("_AdminLteTopMenu")
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <a href="#" id="btnDashboard" class="btn btn-primary pull-right"><i class="fa fa-caret-left"></i> Regresar al Administrador</a>
+            <h1>
+                Detalle de Ventas
+                <small>
+                    Passline - @Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(pais.ToLower())
+                </small>
+            </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content container-fluid">
+            <div class="table-responsive box box-body box-primary" style="padding: 20px !important; margin-top:10px">
+                <table class="table nowrap table-hover" id="dataTable">
+                    <thead>
+                        <tr style="background-color:#3d566e; color:#ecf0f1">
+                            <th>
+                                @Html.Label("Transacción")
+                            </th>
+                            <th>
+                                @Html.Label("Fecha - Hora")
+                            </th>
+                            <th>
+                                @Html.Label("Cantidad")
+                            </th>
+                            <th>
+                                @Html.Label("Total")
+                            </th>
+                            <th style="text-align:center">
+                                @Html.Label("Tipo Pago")
+                            </th>
+                            <th>
+                                @Html.Label("Error")
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            <b>Versión:</b> @version
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; @DateTime.Now.Year <b>- Passline</b>.</strong> Todos los Derechos Reservados.
+    </footer>
+</div>
+<!-- /.main-footer -->
+@section scripts{
+    <script>
+        var moneda = '@moneda';
+        var idTotem = '@idTotem';
+        var idProductor = '@idProductor';
+        var pais = '@ViewBag.Pais';
+        var isDecimal = '@ViewBag.IsDecimal';
+
+        var urlVisor = '@Url.Action("Visor", "Totem")';
+        var urlAdminLte = '@Url.Action("Dashboard", "AdminLte")';
+        var urlGetSalesValues = '@Url.Action("GetSalesValues", "AdminLte", new { idTotem = idTotem  })'+ "&moneda=" + moneda + "&isDecimal=" + isDecimal;
+    </script>
+    @Scripts.Render("~/Scripts/AdminLte/sales.js?" + DateTime.Now.Ticks + "")
+}

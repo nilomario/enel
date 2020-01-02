@@ -1,0 +1,106 @@
+﻿20-10-2019 - GOLD
+----------------------
+- Se crea el log de versiones y actualización interna de la app UpdatesLog.txt.
+- Se implementan Logs de Errores en la ruta: C:\passlinepos\logs.
+- Se actualizan los metodos en ServiceImpl para cuando se consulten los servicios, se guarden los datos en local, en caso de no tener acceso normal, se lee la data desde ahí.
+- Se crean las bases de datos en local y la entidad LocalEntities.edmx.
+- Se añade key IsLocal en WebConfig y se valida en los metodos de ServiceImpl. Así se evita guardar en base de datos local cuando no exista.
+- Se crea el campo Insercion en la tabla Sales para guardar el Id de la compra que viene del servicio.
+- Se creó Estado de Internet en ventana de acceso al DashBoard.
+- Se crea método para no permitir acceso al DashBoard sino hay internet.
+- Se crea método para enviar estado del totem cada 5min.
+- Se acualizan las Categorias y los Productos cada 5min cada vez que el totem esté inactivo por 5 minutos.
+
+05-11-2019 - GOLD
+----------------------
+- Se refresca Visor en el metodo pinPadStatusAfter, en jquery.mycart.js
+- Se añaden Logs de error en metodos de ServiceImpl.
+- Se cambia a un click la tuerca para entrar al dashboard.
+- Se añade load spinner al refrescar páginas.
+* Añadir user y password de Windows en IIS (identidad - Cuenta personalizada) para que funcione el acceso a local_db.
+- Se añade mesaje de error di la impresora no esta lista para imprimir el reporte en el DashBoard.
+- Se implementa Cierre de DashBoard y Cierre de App
+- Se refactorizan los metodos Get en WebServiceImpl y el manejo de errores.
+
+06-11-2019 - GOLD
+----------------------
+- Se añade simbolo de moneda dependiendo del pais para el reporte en PrinterImp.
+- Se organizan las Url en Web.Config y se añaden LabelServices.
+- Se activa el servicio de Envio de un problema en el DashBoard.
+
+10-11-2019 - GOLD
+----------------------
+- Se añade metodo fetch a salesReport y notifyProblem in ajaxCommon para manejar errores de respuesta.
+- Se filtra por fecha el reporte a traves de un popup.
+
+11-11-2019 - GOLD
+----------------------
+- Se validan en ServiceImp cuando los datos vengan vacios desde el servicio.
+* Se Configura el PinPad para que se comunique por USB y no por puerto COM. (configurar PinPad modo USB)
+* Se comienza implementa la vista Glass con transparencias en su face inicial (vista principal).
+* Se comienza a implementar la actualizacion automatica de la App.
+
+21-11-2019 - GOLD
+----------------------
+- Se modifica el método PinPadParaguay en TotemController.
+- Se configura e instala la versión GOLD en Paraguay.
+- Se aumenta el WebClientTimeout en ServiceImpl a 10 seg.
+- Se captura ErrorLog enTotemController método PinPadChile y se envia a UpdateSales.
+* Se actualizan los tótems de Candelaria con la versión de hoy.
+
+24-11-2019 - GOLD
+----------------------
+- Se implementa GetProduct en el DashBoard x Modal.
+- Se modifica método WebClientTimeout para que acepte parametro thetime.
+- Se disminuye el WebClientTimeout en SendTransaction a 5 seg, de no enviarse se repite el 1seg después.
+- Se añade condición isLocal a Logs en ReportImpl y en GetProduct para gestion de las imágenes.
+- Se añade punto decimal al precio de los productos en el Visor.
+- Se implementa GetProduct en el DashBoard x Controller y View.
+- Se cambia ruta a Images en ServiceImpl GetProduct por cadena directa.
+
+28-11-2019 - GOLD
+----------------------
+- Se refactoriza los métodos PrintTicketFirst y ActionPrint en PrinterImpl y isPrinter en TotemController.
+- Se modificaron las rutas de los servicios en Web.Config, se eliminó el último "/", también en los métodos asociados.
+- Se modifican los métodos Morris en ReportImpl y AdminLte Controller para tomar los datos de las ventas a mostrar en graficos del DashBoard desde el servicio Passline.
+
+01-12-2019 - GOLD
+----------------------
+- Se aumentó Timeout de reporte a 20seg.
+- Se corrigieron los links en dashboard.
+- Se corrige acción en jquery.mycart al pagar, por error de repeticiones.
+- Se envia versión de la app en ServiceImpl GetInitialConfig para su registro en Mago.
+- Se añade campo bool decimales en InitialConfig.
+* Se configura e instala la versión GOLD en Perú.
+- Se configura ProductDto Precio como string y los metodos en jquery.mycart para diferenciar por Pais, ademas en _Product.
+- Se formatea por pais los totales en AdminLteController para el reporte.
+- Se transforman los métodos en AdminLteController para que se muestren los decimales en los detalles de Venta y Producto.
+
+13-12-2019 - GOLD
+----------------------
+* Ejecutar nueva query (local_db) para configuración de decimales.
+* Registrar en Windows la Clase HCOMHEPS.LIB con (Regsvr32.exe) para intergracion Procesos MC Perú.
+- Se termina de integración ProcesosMC, con todos sus métodos para la venta con el POS Verifone Vx820.
+- Se mueve fichero UpdateLog.txt a la solución Passline.Totem.Web.
+* Se actualizan hasta esta versión los tótems: 165 y 178.
+- Se cambia método de excepcion en PrinterImpl, PrintTickets.
+- Se añade parametro: "medioPago" para elegir tipo de pago Visa o MasterCard Perú.
+- En TotemController se modifican los DataVisor.ErrorLog para que lleguen con detalle a la excepción y al log.
+* Ejecutar nueva query (local_db) para añadir campo MedioPago en la tabla Sales.
+* Se actualiza el Totem 2001 Paraguay con esta versión.
+- Se verifica el control de errores en el response de ProcesosMC.
+- Se configura la impresión del voucher de ProcesosMC.
+
+13-12-2019 - GOLD
+----------------------
+* Se instala Recharper.
+
+TODO (Por hacer):
+-------
+- Que se muestren las imagenes del dashboard en detalle de productos, cuando la app este en el hosting.
+- Publicar Servicio PinPadPeru en (service.totem.passline.com) y cambiar key en WebConfig, ver el tema del error con hosting.cl.
+- Darle funcionalidad a la flecha del visor.
+- Enviar Log de errores a servicio.
+- Implementar barra informativa de conexión en el DashBoard si falta la internet y mini boton refrescar.
+- Implementar Calendar en reportes anteriores.
+- Revisar Cierre de la App, nuevos permisos de Windows por Acceso Denegado.

@@ -1,0 +1,60 @@
+﻿@{
+    var idTotem = ViewBag.IdTotem;
+    var pais = ViewBag.Pais;
+    var bandera = ViewBag.Bandera;
+}
+@section Styles{
+    @Styles.Render("~/Content/Plugins/AdminLte/adminLTE.css")
+    @Styles.Render("~/Content/AdminLte/style.css")
+    @Styles.Render("~/Content/AdminLte/calendar.css")
+}
+<header class="main-header">
+    <!-- Logo -->
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+
+        <ul class="nav navbar-nav">
+            <li>
+                <span class="myAdminTopBar"><b>Totem @idTotem</b></span>
+            </li>
+            <li>
+                <span class="bandera"><img src=@bandera width="30" /></span>
+            </li>
+            <li>
+                <span class="pais"><b>@pais</b></span>
+            </li>
+        </ul>
+        <div class="navbar navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#" onclick="openVisor();">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="label label-danger my-cart-badge"></span>
+                    </a>
+                </li>
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="fa fa-power-off fa-2x"></span></a>
+                    <ul class="dropdown-menu">
+                        <!-- Menu Footer-->
+                        <li class="user-footer" style="padding:17px !important">
+                            <div class="pull-left">
+                                <a href="javascript: $.get(urlCloseAllTabs)" id="btnCloseMe" class="btn btn-default btn-flat">Cerrar Aplicación</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="javascript: $.get(urlApagarEquipo)" class="btn btn-default btn-flat">APAGAR</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- Chart Car -->
+
+            </ul>
+        </div>
+    </nav>
+</header>

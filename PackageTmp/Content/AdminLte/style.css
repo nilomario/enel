@@ -1,0 +1,84 @@
+﻿.swal2-popup {
+    font-size: 1.6rem !important;
+}
+
+.badge {
+    border-radius: 0;
+}
+
+/*  for modal loader */
+#fade {
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.9);
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .70;
+    filter: alpha(opacity=80);
+}
+
+/* new spinner*/
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: -35px;
+    margin-left: -35px;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+    border-top-color: #07d;
+    animation: spinner .6s linear infinite;
+    z-index: 5000;
+}
+
+.myAdminTopBar {
+    font-size: 20px;
+    color: white;
+    background: purple;
+    display: block;
+    padding-left: 12px;
+    padding-right: 14px;
+    padding-top: 16px;
+    padding-bottom: 15px;
+    cursor: default;
+}
+
+.bandera {
+    font-size: 20px;
+    color: white;
+    display: block;
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-top: 14px;
+    padding-bottom: 15px;
+    cursor: default;
+}
+
+.pais {
+    font-size: 20px;
+    color: white;
+    display: block;
+    padding-right: 14px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    cursor: default;
+}
+
+table.dataTable tbody tr.selected {
+    color: white !important;
+    background-color: #b0beb9 !important;
+}

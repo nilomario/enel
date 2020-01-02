@@ -1,0 +1,99 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@using Passline.Totem.Core.Implementations.Reports;
+@{
+    ViewBag.Title = "Error";
+    Layout = null;
+    var tmp = Model.Exception;
+    ReportImpl error = new ReportImpl();
+    string _error = error.GetBetween(Model.Exception.ToString(), ":", ".");
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <section class="container">
+        <div class="left-half">
+            <article>
+                <h1>Ocurrió un Problema Inesperado</h1>
+                <br />
+                <b>Controller Name: </b>
+                @Html.DisplayFor(m => m.ControllerName)
+                <br />
+                <b>Action Name: </b>
+                @Html.DisplayFor(m => m.ActionName)
+                <br />
+                <b>Error: </b>
+                @Model.Exception.ToString()
+                <br />
+                <br />
+                <input type="button" class="btn btn-default btn-lg" value="Reintentar" onclick="window.location.reload()" />
+            </article>
+        </div>
+        <div class="right-half">
+            <article>
+                <img src="~/Content/Totem/Images/passline_logo.png" />
+            </article>
+        </div>
+    </section>
+</body>
+</html>
+<style>
+    /* Pen-specific styles */
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-size: 1.25rem;
+        font-family: sans-serif;
+        line-height: 150%;
+        text-shadow: 0 2px 2px black;
+    }
+
+    section {
+        color: #fff;
+        text-align: center;
+    }
+
+    div {
+        height: 100%;
+    }
+
+    article {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+        margin: 0 0 0.75rem 0;
+    }
+
+    /* Pattern styles */
+    .container {
+        display: table;
+        width: 100%;
+    }
+
+    .left-half {
+        background-color: #931eb6;
+        position: absolute;
+        left: 0px;
+        width: 50%;
+    }
+
+    .right-half {
+        background-color: whitesmoke;
+        position: absolute;
+        right: 0px;
+        width: 50%;
+    }
+</style>
